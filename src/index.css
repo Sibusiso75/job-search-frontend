@@ -45,13 +45,14 @@ textarea{
   }
   .comments{
     display:flex; flex-direction: column;
-    border:1px dotted lightgray;
-     border-radius: 10px;
+    border:1px dotted black;
+        border-radius: 10px;
      gap:0.5rem;
-
+     background:rgb(22, 22, 24);
+     color:white;
+    margin:5px;
       padding:5px;
-     
-      width:100%;
+      width:fit-content;
 
   }
   .reply{
@@ -74,22 +75,26 @@ textarea{
     font-size: 11px;
     color:gray;
 }
-  .articleContainer{
-    margin:10px;
+  .articleContainer, .s{
+    /* margin:10px; */
     box-shadow:-1px 1px -2px 3px black;
     border:1px solid gray;
     padding:10px;
     word-wrap: break-word;
     width:95%;
   }
+  
+  .s{
+    background: black;
+
+    border:none;
+  }
   .singleArticle{
     box-shadow:-1px 1px -2px 3px black;
-    background: rgb(0,0,15);
-    word-wrap: break-word;
-    color:white;
-    width:100%;
+    border:none;
     padding:10px;
-  padding-bottom: 50%;    
+    word-wrap: break-word;
+    width:95%;
   }
  
   label{
@@ -207,13 +212,11 @@ padding: 5px;
     display:flex;
   }
   .singleArticle{
- box-shadow:-1px 1px -2px 3px black;
-    background: rgb(0,0,15);
-    word-wrap: break-word;
-    color:white;
-    width:100%;
+    box-shadow:-1px 1px -2px 3px black;
+    border:none;
     padding:10px;
-    padding-bottom: 50%;    
+    word-wrap: break-word;
+    width:95%;
 
   }
   
@@ -246,9 +249,13 @@ padding: 5px;
     display:flex; flex-direction: column;
     flex-wrap: wrap;
     word-wrap: break-word;
+    margin:10px;
+
+    background:rgb(22, 22, 24);
+    color:white;
     gap:0.5rem;
 
-    border:1px dotted lightgray;
+    border:1px dotted black;
      border-radius: 10px;
       padding:20px;
       width:fit-content;
@@ -354,7 +361,10 @@ padding: 5px;
   align-items: center;
     font-weight: bold;
   }
+ .s{
 
+    border:none;
+  }
 }
 @media (min-width:1024px){
   body{
@@ -387,7 +397,11 @@ padding: 5px;
   
   .comments{
     display:flex; flex-direction: column;
-    border:1px dotted lightgray;
+    border:1px dotted black;
+    background:rgb(22, 22, 24);
+    margin:10px;
+
+    color:white;
      border-radius: 10px;
      gap:0.5rem;
       padding:20px;
@@ -437,7 +451,11 @@ padding: 5px;
        
   }
   
- 
+  .s{
+
+    border:none;
+    background:white;
+  }
   .sidebar{
     background-image:linear-gradient(to right, rgba(30, 29, 33, 0.957), rgb(31, 11, 11));
     gap:1rem;
@@ -517,12 +535,11 @@ padding: 5px;
   }
   .singleArticle{
     box-shadow:-1px 1px -2px 3px black;
-    background: rgb(0,0,15);
-    color:white;
-
-    width: 100%;
+    border:none;
     padding:10px;
-    padding-bottom:5%;
+    word-wrap: break-word;
+    width:95%;
+
   }
   .site-container{
     transition: 0.4s;

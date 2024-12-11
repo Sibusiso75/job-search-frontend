@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { FaCommentAlt,  FaRegThumbsUp, FaUserCircle } from 'react-icons/fa'
+import { FaComment, FaCommentAlt,  FaRegThumbsUp, FaUserCircle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 function ArticleProps({id,comments,likes,name,date,time,post}) {
@@ -35,17 +35,22 @@ function ArticleProps({id,comments,likes,name,date,time,post}) {
           
                   
                  
-                  <div style={{fontSize:"15px",borderRadius:"30px",color:"darkblue",width:"fit-content",padding:"10px"}} onClick={()=>navigate(`/singleArticle/${id}`)}>
-                  <FaRegThumbsUp/> {likes.length}
-                    </div>
+                  {/* <div style={{display:"flex",fontSize:"15px",borderRadius:"30px",color:"darkblue",width:"fit-content",padding:"10px", justifyContent:"spaceBetween"}} onClick={()=>navigate(`/singleArticle/${id}`)}>
+                  <FaRegThumbsUp/> {likes.length===0?null:likes.length}
+                  <span style={{marginLeft:"1000px"}}>
+
+                  <FaComment/> {comments.length}
+                  </span>
+
+                    </div> */}
                
                <div onClick={()=>navigate(`/singleArticle/${id}`)} style={{padding:"10px",display:"flex",gap:"1rem"}}>
 
-<button style={{padding:"10px",width:"100px",background:"white",borderRadius:"20px", border:"1px solid gray"}} >
+<button style={{padding:"10px",width:"fit-content",background:"white",borderRadius:"20px", border:"1px solid gray"}} >
      <FaRegThumbsUp style={{color:"black"}}/> {likes.length===0?null:likes.length}
      </button>
-     <button  style={{border:"1px solid gray",width:"100px",background:"white",padding:"10px",borderRadius:"20px"}} >
-     <FaCommentAlt/> {comments.length}
+     <button  style={{border:"1px solid gray",width:"fit-content",background:"white",padding:"10px",borderRadius:"20px"}} >
+     <FaComment/> {comments.length===0?null:comments.length}
      </button>
      </div>
 

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getUser } from '../../../../redux/slices/userslice'
 import { toast } from 'react-toastify'
+import { FaComment } from 'react-icons/fa'
 
 function SingleArticle() {
   let { id } = useParams()
@@ -34,6 +35,8 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
   // }
   return (
     <div>
+      <div>
+
       <div style={{ padding: showLikes ? "0px" : "10px" }}>
         <button onClick={() => navigate("/posts")}
           style={{ background: "gray", color: "whitesmoke", fontWeight: "bold" }}>
@@ -88,18 +91,17 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                             <span style={{ color: "gray" }}> {article.likes[0].username}, {article.likes[1].username} and {article.likes[2].username} like this post</span>
                           </span>
                           :
-                          <span onClick={() => navigate(`/singleArticle/${id}`)}>
-                            <FaRegThumbsUp style={{ color: "blue" }} /> <span style={{ color: "gray" }}>{article.likes[0].username}, {article.likes[1].username} and {article.likes.length - 2} others like this post</span>
+                          <span style={{display:"flex", justifyContent:"spaceAround"}} onClick={() => navigate(`/singleArticle/${id}`)}>
+                            <FaRegThumbsUp style={{ color: "blue" }} /> <span style={{ color: "gray" }}> {article.likes[0].username}, {article.likes[1].username} and {article.likes.length - 2} others like this post</span>
+                           
                           </span>
                 }
               </span>
               <span style={{ display: "flex", gap: "0.3rem" }}>
-                <button style={{ padding: "10px", width: "100px", background: "white", borderRadius: "20px", border: "1px solid gray" }} >
-                  <FaRegThumbsUp /> {article.likes.length}
+                <button style={{ padding: "10px", width: "fit-content", background: "white", borderRadius: "20px", border: "1px solid gray" }} >
+                  <FaRegThumbsUp />  {article.likes.length}
                 </button>
-                <button style={{ border: "1px solid gray", width: "100px", background: "white", padding: "10px", borderRadius: "20px" }} >
-                  <FaCommentAlt /> {article.comments.length}
-                </button>
+               
               </span>
             </div>
         }
@@ -111,9 +113,11 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
     width:100%;
     padding:10px;
     padding-bottom: 100%; */}
+          </div>
+<div className="singleContaner">
       {
         !showLikes &&
-        <div className='singleArticle'>
+        <div>
           {/* <div style={{ display: "flex", flexDirection: "column" }}>
             <input type="text" placeholder="write a comment" style={{ width: "fit-content", outline: "none", borderRadius: "10px", padding: "20px" }} />
             <button onClick={loggedIn?submitComment:()=>navigate("/login")}style={{ marginLeft: "2%", width: "fit-content", height: "40px", background: "teal" }}>Post comment</button>
@@ -124,7 +128,6 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
             article.comments.map((c) => {
               return <div key={c.id} className='comments'>
                <div className="flex">
-                
                       <FaUserCircle style={{fontSize: "30px" }} /> {c.username} {article.name == c.username ? "(author)" : ""} <p style={{ color: "gray" }}>
                         {c.date}, {c.time}
                       </p>
@@ -160,6 +163,7 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                       <div style={{ display: "flex", flexDirection: "column", width: "20%" }}>
                         <input type="text" style={{ width: "fit-content" }} placeholder="write a reply" />
                         <button style={{ marginLeft: "10%", height: "10%", width: "fit-content", color: "gray", background: "navy" }}>Send <BsSend /></button>
+                       
                       </div>
                     </div>
                 }
@@ -167,7 +171,11 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
             })
           }
         </div>
-      }
+
+}
+</div>
+
+
     </div>
   )
 }
