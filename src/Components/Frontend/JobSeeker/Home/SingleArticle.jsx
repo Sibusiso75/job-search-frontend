@@ -123,10 +123,13 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
           {
             article.comments.map((c) => {
               return <div key={c.id} className='comments'>
-               
-                      <FaUserCircle style={{fontSize: "30px" }} />{c.username} {article.name == c.username ? "(author)" : ""} <p style={{ color: "gray" }}>
+               <div>
+               <FaUserCircle style={{fontSize: "30px" }} /> {c.username}
+               {article.name == c.username ? "(author)" : ""} <p style={{ color: "gray" }}>
                         {c.date}, {c.time}
                       </p>
+               </div>
+                      
                       <p>{c.comment}</p>
                   
                 {
@@ -136,7 +139,7 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                     </div>
                     :
                     <div>
-                      <div style={{ display: "flex", height: "100%", width: "100%", gap: "0.2rem" }}>
+                      <div style={{ display: "flex", height: "100vh", width: "100vh", gap: "0.2rem" }}>
 
                         <FaArrowCircleLeft style={{ fontSize: "20px" }} onClick={() => setShowReplies(!showReplies)} /><p style={{ fontWeight: "bold", borderBottom: "2px solid gray" }}>
                           replies on {c.username}'s comment
@@ -144,7 +147,7 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                       </div>
                       {
                         c.replies.map((r, index) => {
-                          return <div key={index} style={{ display: "flex", height: "100%", flexDirection: "column", borderRadius: "10px", padding: "20px", width: "100%" }}>
+                          return <div key={index} style={{ display: "flex", height: "100vh", flexDirection: "column", borderRadius: "10px", padding: "20px", width: "100%" }}>
                             <div style={{ display: "flex", gap: "0.2rem" }}>
                               <FaUserCircle style={{ fontSize: "30px" }} />{r.username},
                               <p style={{ color: "gray" }}>
@@ -157,7 +160,7 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                       }
                       <div style={{ display: "flex", flexDirection: "column", width: "20%" }}>
                         <input type="text" style={{ width: "fit-content" }} placeholder="write a reply" />
-                        <button style={{ marginLeft: "10%", height: "10%", width: "fit-content", color: "gray", background: "navy" }}>Send <BsSend /></button>
+                        <button style={{ marginLeft: "10%", height: "100vh", width: "fit-content", color: "gray", background: "navy" }}>Send <BsSend /></button>
                       </div>
                     </div>
                 }

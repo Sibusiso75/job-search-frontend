@@ -17,14 +17,21 @@ const userSlice = createSlice({
 
         getUser:(state, action)=>{
          state.users = action.payload.map(user=>{
-            return {id:user._id,username:user.username,email:user.email,isAdmin:user.isAdmin
-                ,dateOfBirth:user.dateOfBirth, gender:user.gender,town:user.town, postalCode:user.postalCode,
-           aboutMe:user.aboutMe, province:user.province, country:user.country,
+            return {id:user._id,username:user.username,
+                email:user.email,
+                dateOfBirth:user.dateOfBirth, gender:user.gender,
+                town:user.town, postalCode:user.postalCode,
+        //    aboutMe:user.aboutMe, 
+        //  country:user.country,
+        phoneNumber:user.phoneNumber,
+
+           province:user.province,
            highestGradePassed:user.highestGradePassed,
                 schoolName:user.schoolName,
                 yearObtainedOne:user.yearObtainedOne,
                 institutionName:user.institutionName,
                 courseName:user.courseName,
+                bio:user.bio,
                 yearObtainedTwo:user.yearObtainedTwo,
                 jobTitle:user.jobTitle,
                 companyName:user.companyName,
@@ -42,10 +49,13 @@ const userSlice = createSlice({
                 id:action.payload.id,username:action.payload.username,email:action.payload.email, isAdmin:action.payload.isAdmin
                 ,dateOfBirth:action.payload.dateOfBirth, 
                 gender:action.payload.gender,
+                phoneNumber:action.payload.phoneNumber,
                 postalCode:action.payload.postalCode,
+                bio:action.payload.bio,
                 town:action.payload.town, 
-                aboutMe:action.payload.aboutMe, 
-                province:action.payload.province, country:action.payload.country,
+                // aboutMe:action.payload.aboutMe, 
+                province:action.payload.province, 
+                // country:action.payload.country,
                 highestGradePassed:action.payload.highestGradePassed,
                 schoolName:action.payload.schoolName,
                 yearObtainedOne:action.payload.yearObtainedOne,

@@ -15,9 +15,7 @@ function ForgotPassword() {
         if(response.data.status){
           toast.success(response.data.message)
         }
-        else{
-         toast.error(response.data.message)
-        }
+        
       } catch (error) {
         toast.error(error)
       }

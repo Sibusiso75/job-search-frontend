@@ -33,11 +33,7 @@ function AddEducation() {
 
       
     const dispatch = useDispatch()
-    useEffect(()=>{
-      if(loggedIn==false){
-          navigate("/login")
-      }
-    },[])
+   
     axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
@@ -45,6 +41,8 @@ function AddEducation() {
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
+            window.location.reload()
+
       
         }
     }
@@ -83,7 +81,7 @@ function AddEducation() {
   return (
     <div>
        <Button className="me-2" onClick={handleShow}><FaArrowAltCircleLeft/></Button>
-      <Offcanvas show={show} className="cartNav">
+      <Offcanvas show={show} onHide={handleClose} className="cartNav">
         <Offcanvas.Header closeButton>
           <Button bg="secondary" onClick={handleClose}><FaRegWindowClose/></Button>
         </Offcanvas.Header>
@@ -95,7 +93,7 @@ function AddEducation() {
       <Link to={`/profileEditUser/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/education/${id}`} style={{color:"lightgray",background:"rgba(66, 66, 176, 0.327)"}}><FaUserGraduate /> Educational Background<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/workHistory/${id}`} style={{color:"lightgray"}}><MdWorkHistory /> Work History<FaChevronRight style={{float:"right"}}/></Link>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/skills/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/savedJobs/${id}`} style={{color:"lightgray"}}><MdWork/> Saved Jobs<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/myReports/${id}`} style={{color:"lightgray"}}><MdReport/> My Reports<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/feedback/${id}`} style={{color:"lightgray"}}><MdFeedback/> Feedback<FaChevronRight style={{float:"right"}}/></Link>

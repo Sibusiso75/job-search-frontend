@@ -87,7 +87,7 @@ function Users() {
                                 
                               
 
-                               <td>
+                              <td>
                                 <button onClick={()=>navigate(`/user/${user.id}`)}className='btn btn-sm btn-secondary me-2'>Edit</button>
                                 <button onClick={()=>removeUser(user.id)}className='btn btn-sm btn-danger'>Delete</button>
                                </td>

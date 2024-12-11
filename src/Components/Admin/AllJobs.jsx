@@ -66,7 +66,7 @@ className='btn btn-sm btn-success'>
 <td>{username}</td>
 <td>{title}</td>
 <td>{numberOfPeopleToHire}</td>
-<td>{description}</td>
+<td style={{width:"75%"}} dangerouslySetInnerHTML={{__html:description}}/>
 <td>{jobLocation}</td>
 <td>{reside}</td>
 <td>{jobUrl}</td>

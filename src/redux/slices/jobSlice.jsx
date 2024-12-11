@@ -17,7 +17,6 @@ const jobSlice = createSlice({
                 userId:job.userId,
                 jobId:job.jobId,
                 jobLocation:job.jobLocation,
-                
                 reside:job.reside,jobUrl:job.jobUrl,province:job.province,
                 area:job.area,jobType:job.jobType}
         })

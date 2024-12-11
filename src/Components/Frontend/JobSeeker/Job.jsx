@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {FaArrowAltCircleDown, FaArrowAltCircleLeft, FaArrowLeft, FaClock, FaHome, FaInfoCircle, FaLevelUpAlt, FaRegQuestionCircle, FaSearchLocation} from "react-icons/fa"
-import {BsThreeDots} from "react-icons/bs"
+import { FaChevronRight, FaUserCircle, FaUserGraduate,FaArrowAltCircleDown, FaArrowAltCircleLeft, FaArrowLeft, FaClock, FaHome, FaInfoCircle, FaLevelUpAlt, FaRegQuestionCircle, FaSearchLocation} from "react-icons/fa"
+import {BsThreeDots, BsPlus, BsThreeDotsVertical} from "react-icons/bs"
+import {Button, Container,Modal, Form, Nav,Col, Navbar,FormSelect, NavDropdown, Offcanvas} from "react-bootstrap"
 
-import {MdDataArray, MdLocationCity, MdLocationOn, MdOutlineLocationCity, MdReadMore, MdRecentActors, MdRecommend, MdSave, MdWork} from "react-icons/md"
-
+import {MdWorkHistory, MdInterests, MdWork, MdLogout, MdReport, MdFeedback ,MdDataArray, MdLocationCity, MdLocationOn, MdOutlineLocationCity, MdReadMore, MdRecentActors, MdRecommend, MdSave} from "react-icons/md"
+import { Link } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getJob } from '../../../redux/slices/jobSlice'
@@ -36,9 +37,11 @@ const [jobUrl, setJobUrl] = useState(user.jobUrl)
 const [province, setProvince]= useState(user.province)
 const [area, setArea]= useState(user.area)
 const [jobType, setJobType] = useState(user.jobType)
-
+const [createdAt, setCreatedAt] = useState(user.createdAt)
 const [reportMessage, setReportMessage] = useState("") 
-
+const [showModal, setShowModal] = useState(false)
+ const handleCloseModal = () => setShowModal(false);
+ const handleShowModal = () => setShowModal(true);
 
 
 
@@ -90,7 +93,7 @@ const [reportMessage, setReportMessage] = useState("")
         dispatch(addReport(response.data))
         toast.success(response.data.message)
         console.log(response.data)
-
+        handleCloseModal()
       }
       else {
         navigate("/login")
@@ -119,9 +122,8 @@ const [reportMessage, setReportMessage] = useState("")
 
  <br />
  <p> <b><FaInfoCircle/> About the job </b></p>
- <ul>
- <li style={{width:"75%"}}>{description}</li>
- </ul>
+ <div style={{width:"75%"}} dangerouslySetInnerHTML={{__html:description}}/>
+ 
  
                         {/* <p><b>Posted in </b>{createdAt}</p> */}
 
@@ -136,21 +138,42 @@ const [reportMessage, setReportMessage] = useState("")
                         Save job <MdSave />
                           </button>
 
-                          <button className='btn btn-sm btn-secondary me-2' onClick={()=>setShowForm(!showForm)} >
+                          <button className='btn btn-sm btn-secondary me-2' onClick={handleShowModal} >
 
-                                <BsThreeDots/>
+                                Report Job <BsThreeDotsVertical/>
                           </button>
                         </div> 
-                          {showForm?
-                        <form onSubmit={reportJob}>
-                          <textarea onChange={(e)=>setReportMessage(e.target.value)}placeholder='report a job post'/>
-                          <button type='submit'>Report</button>
-                        </form>
-                        :
-                        null
-                       
-                      } 
-        
+                        <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Report</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={reportJob}>
+        <Modal.Body>
+        <Form.Group className="mb-3" controlId="validationCustom01">
+          <Form.Label>Report</Form.Label>
+            <Form.Control as="textarea" rows={3}
+              type="text"
+
+              onChange={(e)=>setReportMessage(e.target.value)}
+              placeholder="Write a report"
+              autoFocus
+              required
+            />
+           
+        </Form.Group>
+       
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button variant="primary" type="submit">
+            Save Changes
+          </Button>
+        </Modal.Footer>
+        </Form>
+        </Modal>
+        {/* <Button onClick={handleShowModal}>Report Job</Button> */}
     </div>
   )
 }

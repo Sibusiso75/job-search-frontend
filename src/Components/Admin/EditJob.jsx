@@ -5,6 +5,7 @@ import { FaHome } from 'react-icons/fa'
 import axios from "axios"
 import { updateJob } from '../../redux/slices/jobSlice'
 import { toast } from 'react-toastify'
+import ReactQuill from "react-quill"
 
 
 function EditJob() {
@@ -58,10 +59,12 @@ async function update(e){
             
             placeholder='e.g Software Developer'/>
                          <label htmlFor="">Job description</label>
-            <textarea  
+                         <ReactQuill
+            theme="snow"
             value={description}
+            onChange={setDescription}
              required
-            onChange={(e)=>setDescription(e.target.value)}
+             className="editor-input"
             
             placeholder='Job description ...'/>
               <label htmlFor="">Number of People to hire for this job</label><br />

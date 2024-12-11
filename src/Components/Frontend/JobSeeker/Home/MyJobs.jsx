@@ -30,11 +30,7 @@ function MyJobs() {
 
  
   // https://job-search-api-n5ob.onrender.com/jobs
-  useEffect(()=>{
-    if(loggedIn==false){
-        navigate("/login")
-    }
-  },[])
+  
   
   axios.defaults.withCredentials=true;
   async function handleLogOut(e){
@@ -43,6 +39,8 @@ function MyJobs() {
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
+            window.location.reload()
+
       
         }
     }
@@ -62,7 +60,7 @@ function MyJobs() {
           
          
           <Button className="me-2" onClick={handleShow}><FaArrowAltCircleLeft/></Button>
-      <Offcanvas show={show} className="cartNav">
+      <Offcanvas show={show} onHide={handleClose} className="cartNav">
         <Offcanvas.Header closeButton>
           <Button bg="secondary" onClick={handleClose}><FaRegWindowClose/></Button>
         </Offcanvas.Header>
@@ -74,7 +72,7 @@ function MyJobs() {
       <Link to={`/profileEditUser/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/education/${id}`} style={{color:"lightgray"}}><FaUserGraduate /> Educational Background<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/workHistory/${id}`} style={{color:"lightgray"}}><MdWorkHistory /> Work History<FaChevronRight style={{float:"right"}}/></Link>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/skills/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/savedJobs/${id}`} style={{color:"lightgray",background:"rgba(66, 66, 176, 0.327)"}}><MdWork/> Saved Jobs<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/myReports/${id}`} style={{color:"lightgray"}}><MdReport/> My Reports<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/feedback/${id}`} style={{color:"lightgray"}}><MdFeedback/> Feedback<FaChevronRight style={{float:"right"}}/></Link>
@@ -95,7 +93,7 @@ function MyJobs() {
         </Offcanvas.Body>
       </Offcanvas>
      <br /><br />
-
+  <div>{save.length==0&& <h3>No jobs have been saved</h3>}</div>
      {
       save.filter((s)=>{
         return s

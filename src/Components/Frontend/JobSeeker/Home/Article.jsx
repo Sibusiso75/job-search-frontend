@@ -9,6 +9,7 @@ import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "reac
 import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork } from 'react-icons/md';
 import axios from 'axios';
 import { userLoggedIn } from '../../../../redux/slices/userslice';
+import MyLoader from '../../../../MyLoader';
 
 function Article() {
   const loggedIn = useSelector(state=>state.users.loggedIn)
@@ -31,6 +32,8 @@ function Article() {
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
+            window.location.reload()
+
       
         }
     }
@@ -103,17 +106,17 @@ style={{color:"white"}}><FaHome/><span > Home</span> </Link>
 
       
     </Navbar>
-      <Offcanvas show={show} className="cartNav">
+      <Offcanvas show={show} onHide={handleClose} className="cartNav">
         <Offcanvas.Header closeButton>
           <Button bg="secondary" onClick={handleClose}><FaWindowClose/></Button>
         </Offcanvas.Header>
         <Offcanvas.Body>
         {show?  <div >
       {loggedIn?<div style={{display:"flex",gap:"2rem", flexDirection:"column"}}>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/profileEditUser/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/education/${id}`} style={{color:"lightgray"}}><FaUserGraduate /> Educational Background<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/workHistory/${id}`} style={{color:"lightgray"}}><MdWorkHistory /> Work History<FaChevronRight style={{float:"right"}}/></Link>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/skills/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/savedJobs/${id}`} style={{color:"lightgray"}}><MdWork/> Saved Jobs<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/myReports/${id}`} style={{color:"lightgray"}}><MdReport/> My Reports<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/feedback/${id}`} style={{color:"lightgray"}}><MdFeedback/> Feedback<FaChevronRight style={{float:"right"}}/></Link>
@@ -142,6 +145,8 @@ style={{color:"white"}}><FaHome/><span > Home</span> </Link>
               Post 
               </button>
           </div> */}
+      {articles.length===0 && <MyLoader/>}
+
            {
             articles.filter((a)=>{
             return a.post.toLowerCase().includes(query.toLowerCase())

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState,useEffect} from "react"
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch,useSelector } from "react-redux"
@@ -87,8 +87,9 @@ function Login() {
            Please provide a valid password
           </Form.Control.Feedback>
         </Form.Group>
-       {error? <p style={{fontSize:"small",color:"red"}}>Incorect Email or Password</p>:null}
-      <Button type="submit">Login</Button>
+       {error? <p style={{fontSize:"small",color:"red"}}>Password or Email entered is incorrect</p>:null}
+
+      <Button type="submit">Login</Button >
         </Form> 
         <Link style={{color:"blue"}} to="/forgotPassword">Forgot Password?</Link>
             <p>Don't have an account? <Link style={{color:"blue"}} to ="/register">

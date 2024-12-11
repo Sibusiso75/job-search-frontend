@@ -6,6 +6,7 @@ import reportReducer from "../slices/reportSlice"
 import savedJobsReducer from "../slices/savedJobsSlice"
 import employerReducer from "../slices/employerslice";
 import feedbackReducer from "../slices/feedbackSlice";
+import skillReducer from "../slices/skillSlice";
 
 
 const store = configureStore({
@@ -16,7 +17,8 @@ const store = configureStore({
        jobs:jobReducer,
        reports:reportReducer,
        savedJobs:savedJobsReducer,
-       feedbacks:feedbackReducer
+       feedbacks:feedbackReducer,
+       skills:skillReducer
     }
 })
 export default store

@@ -57,6 +57,8 @@ import { userLoggedIn } from './redux/slices/userslice'
 import { useSelector,useDispatch } from 'react-redux'
 import PersonalDetails from './Components/Frontend/JobSeeker/Home/PersonalDetails'
 import Profile from './Components/Frontend/JobSeeker/Home/Profile'
+import AddSkills from './Components/Frontend/JobSeeker/Home/AddSkills'
+import {Button, Container,Modal, Form, Nav,Col,Card,Placeholder, Navbar,FormSelect, NavDropdown, Offcanvas} from "react-bootstrap"
 
 function App(){
  const loggedIn = useSelector(state=>state.users.users)
@@ -75,7 +77,6 @@ function App(){
     <BrowserRouter>
   
 
-      <Suspense fallback={<ReactLoading type={"spinningBubbles"} color={"blue"} height={667} width={375} />}>
      
      <Routes>
       <Route path="/" element={<Home/>}></Route>  
@@ -96,6 +97,7 @@ function App(){
 
       <Route path={loggedIn?"/education/:id":"/login"} element={<AddEducation/>}></Route>
       <Route path={loggedIn?"/workHistory/:id":"/login"} element={<AddWork/>}></Route>
+      <Route path="/skills/:id" element={<AddSkills/>}></Route>
 
 
 
@@ -141,7 +143,6 @@ function App(){
       <Route path="*" element={<h2>404 - Page not found</h2>}></Route>
 </Routes>
       
-      </Suspense>
      
     </BrowserRouter>
   )

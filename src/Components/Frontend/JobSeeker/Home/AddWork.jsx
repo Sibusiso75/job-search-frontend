@@ -4,8 +4,7 @@ import {FaSearchLocation,FaRegWindowClose, FaUserCircle, FaHome, FaArrowAltCircl
 import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork, MdSavings, MdSaveAlt } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
-import Col from 'react-bootstrap/Col';
+import {Button, Container, Form, Nav,Col, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
 import { updateUser, userLoggedIn } from '../../../../redux/slices/userslice'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom';
@@ -29,11 +28,7 @@ function AddWork() {
       
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        if(loggedIn==false){
-            navigate("/login")
-        }
-      },[])
+   
       
     axios.defaults.withCredentials=true;
   async function handleLogOut(e){
@@ -42,6 +37,7 @@ function AddWork() {
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
+            window.location.reload()
       
         }
     }
@@ -81,7 +77,7 @@ function AddWork() {
   return (
     <div>
        <Button className="me-2" onClick={handleShow}><FaArrowAltCircleLeft/></Button>
-      <Offcanvas show={show} className="cartNav">
+      <Offcanvas show={show} onHide={handleClose} className="cartNav">
         <Offcanvas.Header closeButton>
           <Button bg="secondary" onClick={handleClose}><FaRegWindowClose/></Button>
         </Offcanvas.Header>
@@ -93,7 +89,7 @@ function AddWork() {
       <Link to={`/profileEditUser/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/education/${id}`} style={{color:"lightgray"}}><FaUserGraduate /> Educational Background<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/workHistory/${id}`} style={{color:"lightgray",background:"rgba(66, 66, 176, 0.327)"}}><MdWorkHistory /> Work History<FaChevronRight style={{float:"right"}}/></Link>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/skills/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/savedJobs/${id}`} style={{color:"lightgray"}}><MdWork/> Saved Jobs<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/myReports/${id}`} style={{color:"lightgray"}}><MdReport/> My Reports<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/feedback/${id}`} style={{color:"lightgray"}}><MdFeedback/> Feedback<FaChevronRight style={{float:"right"}}/></Link>
@@ -166,7 +162,7 @@ function AddWork() {
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom05">
           <Form.Label>End Date</Form.Label>
-          <Form.Control type="text" value={endDate} onChange={(e)=>setEndDate(e.target.value)} placeholder="Qualification name" required />
+          <Form.Control type="text" value={endDate} onChange={(e)=>setEndDate(e.target.value)} placeholder="End date" required />
           <Form.Control.Feedback type="invalid">
             Please provide a valid value.
           </Form.Control.Feedback>

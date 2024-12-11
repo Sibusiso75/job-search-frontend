@@ -5,6 +5,12 @@ textarea{
   border-radius: 15px;
   outline: none;
 }
+.editor{
+  height:100%;
+  width:50%;
+  display:flex;
+
+}
 .footer {
   position: relative;
   bottom: 0px;

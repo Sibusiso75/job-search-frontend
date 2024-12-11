@@ -9,8 +9,9 @@ import { Link, useNavigate, useLocation} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import {BsThreeDotsVertical} from 'react-icons/bs'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
-import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff } from 'react-icons/md'
+import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff, MdLocationPin, MdLocationSearching, MdMyLocation, MdAddLocationAlt, MdOutlineLocalActivity } from 'react-icons/md'
 import { toast } from 'react-toastify'
+import MyLoader from '../../../../MyLoader'
 
 function Home() {
   
@@ -50,6 +51,8 @@ async function handleLogOut(e){
       if(response.data.status){
         dispatch(userLoggedIn(false))
           navigate("/login")
+          window.location.reload()
+
     
       }
   }
@@ -125,64 +128,10 @@ useEffect(()=>{
    fetchJobs()
  }, [])
 
-//  function showingSave(){
-//   setShowSave(!showSave)
-//  }
 
-//  async function save(e){
-//   e.preventDefault()
-//   try {
-//     const response = await axios.post("https://job-search-api-n5ob.onrender.com/save-job",{
-//       userId,username
-//       })
-
-//     if(response.data.status){
-//       setSavedJobs(jobs)
-//       dispatch(saveJob(response.data))
-//       toast.success(response.data.message)
-//       console.log(response.data)
-//     }
-//     else {
-//       navigate("/login")
-//     }
-//   } catch (error) {
-//     toast.error("error")
-//     console.log(error)
-//   }
-// }
-
-
-
-
-//  function getFilterUrl(filter){
-//    const filterPage = filter.page || page
-//   const filterCategory = filter.category || category
-//     const filterQuery = filter.query || q
-//     const filterPrice =filter.price  || price
-//     // return `http://localhost:5000/jobs/search?page=${filterPage}&query=${filterQuery}&category=${filterCategory}&price=${filterPrice}&order=${filterOrder}`
-//     // const rating = searchParams.get('rating') || 'all'
-//     const filterOrder = filter.order || order
-    
-//     return `/jobs/search?page=${filterPage}&query=${filterQuery}&category=${filterCategory}&price=${filterPrice}&order=${filterOrder}`
-//  }
-
- 
   return (
     <div>
-        {/* <header className="cartNav">
-        <input type="text" onChange={(e)=>setQuery(e.target.value)} 
-              
-              placeholder='search by job title, province and city ...'/>
-        <Link to="/" style={{borderBottom:"2px double white"}} ><FaHome/> Home </Link>
-        <Link to="/posts"><MdArticle/> Posts</Link>
-          {/* <Link to="/savedJobs"> <MdWork/> Saved Jobs</Link> */}
-       {/* <br />
-                <div className='alignRight' onClick={()=>setShow(!show)} >
-                                 {show?<div><FaRegWindowClose/></div>:<div><FaAlignJustify/></div>} 
-                            </div> */}
-      {/* </header>  */}
-      {/* 0686852083 */}
-
+        
       <Navbar bg="dark" >
       <Form className="d-flex">
             <Form.Control
@@ -209,7 +158,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
 
       
     </Navbar>
-      <Offcanvas show={show} className="cartNav">
+      <Offcanvas show={show} onHide={handleClose} className="cartNav">
         <Offcanvas.Header closeButton>
           <Button onClick={handleClose}><FaRegWindowClose/></Button>
         </Offcanvas.Header>
@@ -219,7 +168,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
       <Link to={`/profileEditUser/${id}`} style={{color:"lightgray"}}><FaUserCircle /> Personal Information<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/education/${id}`} style={{color:"lightgray"}}><FaUserGraduate /> Educational Background<FaChevronRight style={{float:"right"}}/></Link>
       <Link to={`/workHistory/${id}`} style={{color:"lightgray"}}><MdWorkHistory /> Work History<FaChevronRight style={{float:"right"}}/></Link>
-      <Link to={`/profile/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
+      <Link to={`/skills/${id}`} style={{color:"lightgray"}}><MdInterests /> Skills <FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/savedJobs/${id}`} style={{color:"lightgray"}}><MdWork/> Saved Jobs<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/myReports/${id}`} style={{color:"lightgray"}}><MdReport/> My Reports<FaChevronRight style={{float:"right"}}/></Link>
         <Link to={`/feedback/${id}`} style={{color:"lightgray"}}><MdFeedback/> Feedback<FaChevronRight style={{float:"right"}}/></Link>
@@ -289,6 +238,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
           }
         </ul>
       </div> */}
+      {jobs.length===0 && <MyLoader/>}
       <br />
         
          {/* <Row className="justify-content-between mb-3">
@@ -320,7 +270,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
         <div style={{display:"flex",gap:"1rem"
        , flexWrap:"wrap",
 }}>
-  {/* {jobs.length===0 && <h3>No jobs found</h3>} */}
+
             {
                 jobs.filter((job)=>{
                   return job.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -329,25 +279,16 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                   
                 }).reverse().map((job)=>{
                       return  <div key={job.id} className='itemsContainer'>
+                         
                       <div  style={{display:"flex", flexDirection:"column"}}  onClick={()=>navigate(`/job/${job.id}`)}>
                                     <p><MdWork/> Job title - <b>{job.title}</b></p>
                                     <p><MdLocationCity/> <b> {job.jobType}</b></p>
-                                    <p><MdLocationOn/> {job.province}, {job.area}</p>
-                                    {/* <p><MdWork/> {job.jobLocation}</p> */}
+                                    <p><MdLocationPin/> {job.province}, {job.area}</p>
 
                                     <p><FaClock/> Posted in {job.createdAt}</p>
                                    
                                   </div>
-                                  {/* <div style={{display:"flex", justifyContent:"flex-end"}}>
-            
-                                     <BsThreeDotsVertical style={{fontSize:"25px"}} onClick={showingSave} /> 
-                                  
-                                   {showSave?
-                                    <div>
-                                       <button onClick={save} style={{background:"black",color:"white"}}> Save job</button>
-                                  </div>:null}  
-            
-                                      </div> */}
+                                 
                                 </div>                            
                 })
             }
