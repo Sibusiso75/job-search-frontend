@@ -51,7 +51,6 @@ async function handleLogOut(e){
       if(response.data.status){
         dispatch(userLoggedIn(false))
           navigate("/login")
-          window.location.reload()
 
     
       }
