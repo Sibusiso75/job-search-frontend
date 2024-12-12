@@ -99,7 +99,7 @@ async function update(e){
              <select value={jobLocation} onChange={(e)=>setJobLocation(e.target.value)}>
               <option value="select an option">select an option</option>
               <option placeholder="The job is performed at a specific address" value="In-person. Precise location">In-person. Precise location</option>
-              <option value="Remote. The job is performed remotely">Remote. The job is performed remotely </option>
+              <option value="The job is performed remotely">The job is performed remotely </option>
               <option value="Hybrid. The job combines working in office and remotely">Hybrid. The job combines working in office and remotely </option>
               <option value="On the road. The job requires regular travel">On the road. The job requires regular travel </option>
             </select>

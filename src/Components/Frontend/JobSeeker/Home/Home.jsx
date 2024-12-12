@@ -282,9 +282,8 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                          
                       <div  style={{display:"flex", flexDirection:"column"}}  onClick={()=>navigate(`/job/${job.id}`)}>
                                     <p><MdWork/> Job title - <b>{job.title}</b></p>
-                                    <p><MdLocationCity/> <b> {job.jobType}</b></p>
-                                    <p><MdLocationPin/> {job.province}, {job.area}</p>
-
+                                    <p><MdLocationCity/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
+                                    <p><MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}</p>
                                     <p><FaClock/> Posted in {job.createdAt}</p>
                                    
                                   </div>

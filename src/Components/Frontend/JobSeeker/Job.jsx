@@ -115,7 +115,7 @@ const [showModal, setShowModal] = useState(false)
       
      <p><MdWork/> Job title - <b>{title}</b></p>
                                     <p><MdLocationCity/> <b> {jobType}</b></p>
-                                    <div>{province==""?null:area==""?null:<span><MdLocationOn/> {province}, {area}</span>}</div>
+                                  <div><MdLocationOn/> {province==""?"":`${province},`} {area}</div>
                                     <p><MdWork/> {jobLocation}</p>
 
                                     <p><FaClock/> Posted in {createdAt}</p>
