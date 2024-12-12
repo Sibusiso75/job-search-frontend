@@ -64,7 +64,7 @@ const [showModal, setShowModal] = useState(false)
   async function save(e){
     e.preventDefault()
     try {
-      const response = await axios.post(`http://localhost:5000/saveJob/${id}`,{ userId,jobId,
+      const response = await axios.post(`https://job-search-api-wyvc.onrender.com/saveJob/${id}`,{ userId,jobId,
         title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area,jobType,
         username})
       if(response.data.status){
@@ -85,7 +85,7 @@ const [showModal, setShowModal] = useState(false)
   async function reportJob(e){
     e.preventDefault()
     try {
-      const response = await axios.post(`http://localhost:5000/addReport/${id}`,{ userId,jobId,
+      const response = await axios.post(`https://job-search-api-wyvc.onrender.com/addReport/${id}`,{ userId,jobId,
         reportMessage,title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area,jobType,
         username})
       if(response.data.status){

@@ -31,7 +31,6 @@ function Home() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [savedJobs, setSavedJobs] = useState([])
 //   const [title, setTitle] = useState("")
 // const [numberOfPeopleToHire, setNumberOfPeopleToHire] = useState("")
 // const [description, setDescription] = useState("")
