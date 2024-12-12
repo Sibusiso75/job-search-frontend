@@ -11,7 +11,7 @@ function AdminNav() {
   axios.defaults.withCredentials=true;
   async function handleLogOut(e){
     e.preventDefault()
-    const response = await axios.get("http://localhost:5000/logout")
+    const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
       if(response.data.status){
           navigate("/admin")
     
