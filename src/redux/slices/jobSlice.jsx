@@ -30,7 +30,8 @@ const jobSlice = createSlice({
                 title:action.payload.title,numberOfPeopleToHire:action.payload.numberOfPeopleToHire,
                 description:action.payload.description,jobLocation:action.payloadjobLocation,
                 reside:action.payload.reside,jobUrl:action.payload.jobUrl,
-                province:action.payload.province,area:action.payload.area,jobType:action.payload.jobType,
+                province:action.payload.province,area:action.payload.area,
+                jobType:action.payload.jobType,
                 username:action.payload.username        
             }
             

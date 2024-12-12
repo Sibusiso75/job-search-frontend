@@ -115,14 +115,14 @@ const [showModal, setShowModal] = useState(false)
       
      <p><MdWork/> Job title - <b>{title}</b></p>
                                     <p><MdLocationCity/> <b> {jobType}</b></p>
-                                    <p><MdLocationOn/> {province}, {area}</p>
-                                    {/* <p><MdWork/> {job.jobLocation}</p> */}
+                                    <div>{province==""?null:area==""?null:<span><MdLocationOn/> {province}, {area}</span>}</div>
+                                    <p><MdWork/> {jobLocation}</p>
 
                                     <p><FaClock/> Posted in {createdAt}</p>
 
  <br />
  <p> <b><FaInfoCircle/> About the job </b></p>
- <div style={{width:"75%"}} dangerouslySetInnerHTML={{__html:description}}/>
+ <div  dangerouslySetInnerHTML={{__html:description}}/>
  
  
                         {/* <p><b>Posted in </b>{createdAt}</p> */}

@@ -10,14 +10,14 @@ import ReactQuill from "react-quill"
 
  /*inputs -
   //  1. Your company's name
-  //  2. Your company's number of employees -options (select an option, 1-49,50-149,150-249, 250-499, 500-749, 750-999, 1000+ )
+  //  2. Your company's number of employees -options (, 1-49,50-149,150-249, 250-499, 500-749, 750-999, 1000+ )
   //  3. Your first and last name
-  //  4. Your phone number - options (select an option, 1,2,3,4,5,6,7,8,9,10,10+, I have an ongoing need to fill this role)
+  //  4. Your phone number - options (, 1,2,3,4,5,6,7,8,9,10,10+, I have an ongoing need to fill this role)
   //  continue button
   //  next page
   //  5. Job title
-  //  6. Number of people to hire for this job options (select an option, 1,2,3,4,5,6,7,8,9,10,10+, I have an ongoing need to fill this role)
-  //  7. Which option best describes this job's location? (select an option, {In-person, precise location - The job is performed at a specific address},
+  //  6. Number of people to hire for this job options (, 1,2,3,4,5,6,7,8,9,10,10+, I have an ongoing need to fill this role)
+  //  7. Which option best describes this job's location? (, {In-person, precise location - The job is performed at a specific address},
   //   {General location within a limited area. The job address can't be specified }, {Remote. The job is performed remotely }, {Hybrid. The job combines working in office and remotely}, {On the road. The job requires regular travel}  )
   //  8. Are employees required to reside in a specific location? (yes or no)[radio input]
   //  continue button
@@ -110,7 +110,7 @@ try {
                          <br /><br /><br/>
               <span>Number of People to hire for this job</span><br />
               <select onChange={(e)=>setNumberOfPeopleToHire(e.target.value)}>
-              <option value="Select an option">Select an option</option>
+              <option value=""></option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -137,7 +137,7 @@ try {
                <p>Which option best describes this job's location?</p>
                
              <select onChange={(e)=>setJobLocation(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option placeholder="The job is performed at a specific address" value="In-person. Precise location">In-person. Precise location</option>
               <option value="Remote. The job is performed remotely">Remote. The job is performed remotely </option>
               <option value="Hybrid. The job combines working in office and remotely">Hybrid. The job combines working in office and remotely </option>
@@ -148,13 +148,13 @@ try {
 
 </p>
 <select onChange={(e)=>setReside(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option value="Yes">Yes</option>
               <option value="No">No </option>
             </select>
             <p>Which province is this job located?</p>
             <select onChange={(e)=>setProvince(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option value="Eastern Cape">Eastern Cape</option>
               <option value="Western Cape">Western Cape </option>
               <option value="Northern Cape">Northern Cape </option>
@@ -164,10 +164,11 @@ try {
               <option value="KZN">KZN </option>
               <option value="Limpopo">Limpopo </option>
               <option value="Mpumalanga">Mpumalanga </option>
+
             </select>
             <p>Job Type</p>
             <select onChange={(e)=>setJobType(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option value="Full Time">Full Time</option>
               <option value="Part Time">Part Time</option>
               <option value="Contract">Contract</option>

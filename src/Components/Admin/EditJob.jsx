@@ -10,8 +10,6 @@ import ReactQuill from "react-quill"
 
 function EditJob() {
     let {id}=  useParams() 
-    let navigate = useNavigate()
-    const dispatch = useDispatch()
     const jobs = useSelector(state=>state.jobs.jobs)
     const job = jobs.find(u=>u.id==id)
     const [title, setTitle] = useState(job.title)
@@ -23,13 +21,15 @@ function EditJob() {
     const [jobType, setJobType] = useState(job.jobType)
     const [province, setProvince]= useState(job.province)
     const [area, setArea]= useState(job.area)
-
+    let navigate = useNavigate()
+    const dispatch = useDispatch()
+    
 async function update(e){
   e.preventDefault()
   try {
     
     const res = await axios.put(`http://localhost:5000/editJob/${id}`,{
-      title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area})
+      title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,jobType,province,area})
       if(res.data.status){
         dispatch(updateJob(res.data))
         toast.success(res.data.message)
@@ -108,13 +108,13 @@ async function update(e){
 
 </label>
 <select value={reside} onChange={(e)=>setReside(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option value="Yes">Yes</option>
               <option value="No">No </option>
             </select>
             <label htmlFor="">Which province is this job located?</label>
             <select value={province} onChange={(e)=>setProvince(e.target.value)}>
-              <option value="select an option">select an option</option>
+              <option value=""></option>
               <option value="Eastern Cape">Eastern Cape</option>
               <option value="Western Cape">Western Cape </option>
               <option value="Northern Cape">Northern Cape </option>
@@ -124,6 +124,7 @@ async function update(e){
               <option value="KZN">KZN </option>
               <option value="Limpopo">Limpopo </option>
               <option value="Mpumalanga">Mpumalanga </option>
+
             </select>
             <label htmlFor="">Job Type</label>
             <select value={jobType} onChange={(e)=>setJobType(e.target.value)}>

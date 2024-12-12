@@ -97,12 +97,12 @@ const loggedIn = useSelector(state=>state.users.loggedIn)
                           </span>
                 }
               </span>
-              <span style={{ display: "flex", gap: "0.3rem" }}>
+              {/* <span style={{ display: "flex", gap: "0.3rem" }}>
                 <button style={{ padding: "10px", width: "fit-content", background: "white", borderRadius: "20px", border: "1px solid gray" }} >
                   <FaRegThumbsUp />  {article.likes.length}
                 </button>
                
-              </span>
+              </span> */}
             </div>
         }
       </div>
