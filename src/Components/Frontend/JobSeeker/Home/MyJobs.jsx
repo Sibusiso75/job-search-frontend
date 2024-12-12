@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {FaSearchLocation,FaRegWindowClose, FaUserCircle, FaHome, FaArrowAltCircleLeft, FaComment, FaWindowClose, FaAlignJustify, FaChevronRight, FaInfoCircle, FaUserGraduate, FaRegSave, FaFacebookSquare, FaTwitter, FaSignInAlt, FaSave } from 'react-icons/fa';
-import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork, MdSavings, MdSaveAlt } from 'react-icons/md';
+import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork, MdSavings, MdSaveAlt, MdLocationOn } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
@@ -101,16 +101,16 @@ function MyJobs() {
         return <div key={j.id}>
     <p> <b>Job Title - </b><MdWork/> {j.title}</p>
  <p><b>Job Type - </b>{j.jobType}</p>
- <p> <b>Job Location - </b><FaSearchLocation/> {j.province}, {j.area}</p>
+ <div><MdLocationOn/> {j.province==""?"":`${j.province},`} {j.area}</div>
  <p>{j.jobLocation}</p>
  <div style={{dispaly:"flex"}}>
 
- <button style={{background:"black",color:"lightgray"}}>
+ <button disabled style={{background:"black",color:"lightgray"}}>
 
                         Saved <FaSave/>
                           </button>
-                          <button onClick={()=>navigate(`/job/${j.jobId}`)}>
-                            View job
+                          <button style={{marginLeft:"20px"}}onClick={()=>navigate(`/job/${j.jobId}`)}>
+                            View job 
                           </button>
 
  </div>

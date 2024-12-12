@@ -13,6 +13,7 @@ import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, M
 import { toast } from 'react-toastify'
 import MyLoader from '../../../../MyLoader'
 
+
 function Home() {
   
   let navigate = useNavigate()
@@ -238,7 +239,8 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
           }
         </ul>
       </div> */}
-      {jobs.length===0 && <MyLoader/>}
+    
+
       <br />
         
          {/* <Row className="justify-content-between mb-3">
@@ -265,7 +267,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
          </select>
           </Col> */}
          {/* </Row> */}
-
+{jobs.length==0 && <MyLoader/>}
         
         <div style={{display:"flex",gap:"1rem"
        , flexWrap:"wrap",
@@ -281,10 +283,13 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                       return  <div key={job.id} className='itemsContainer'>
                          
                       <div  style={{display:"flex", flexDirection:"column"}}  onClick={()=>navigate(`/job/${job.id}`)}>
-                                    <p><MdWork/> Job title - <b>{job.title}</b></p>
-                                    <p><MdLocationCity/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
-                                    <p><MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}</p>
-                                    <p><FaClock/> Posted in {job.createdAt}</p>
+                    
+
+                     <p><MdWork/> Job title - <b>{job.title}</b></p>
+                     <p><MdLocationCity/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
+                     <p><MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}</p>
+                     <p><FaClock/> Posted in {job.createdAt}</p>
+                  
                                    
                                   </div>
                                  

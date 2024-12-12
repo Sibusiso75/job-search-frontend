@@ -7,6 +7,7 @@ import {ToastContainer} from "react-toastify"
 import store from './redux/store/store.jsx'
 import { Provider } from 'react-redux'
 import "react-quill/dist/quill.snow.css"
+import 'react-loading-skeleton/dist/skeleton.css'
 import "./index.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(

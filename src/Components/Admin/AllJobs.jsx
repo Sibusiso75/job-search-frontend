@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 function AllJobs() {
     const dispatch = useDispatch()
     const jobs = useSelector(state=>state.jobs.jobs)
+    const [searchJob, setSearchJob] = useState("")
     let navigate = useNavigate()
     useEffect(() => {
       const fetchData = async ()=>{
@@ -29,25 +30,26 @@ try {
         {/* <h2 style={{textAlign:"center"}}>{jobs.length} jobs</h2> */}
        <div>
 
-          <div style={{margin:"10px"}}>
+          <div style={{display:"flex",margin:"10px"}}>
 <button onClick={()=>navigate("/admin/addJob")} 
 className='btn btn-sm btn-success'>
   Add new job <FaPlus/>
 </button>
+<input type="text" onChange={(e)=>setSearchJob(e.target.value)} placeholder='search job by ID' />
+
 </div>
           <table className='table'>
-
                 <thead >
                     <tr>
                         <th >ID</th>
                         <th>UserId</th>
                         <th>Posted By</th>
                         <th >Title</th>
-                        <th>Number of People to hire</th>
-                        <th>Description</th>
+                        {/* <th>Number of People to hire</th> */}
+                        {/* <th>Description</th> */}
                         <th>Job location</th>
                         <th>Reside In</th>
-                        <th>Job url</th>
+                        {/* <th>Job url</th> */}
                         <th>Job Type</th>
                         <th>Job town</th>
                         <th>Action</th>
@@ -56,7 +58,11 @@ className='btn btn-sm btn-success'>
                 <tbody>
                 {
        jobs.filter((j)=>{
-        return j
+        return j.title.toLowerCase().includes(searchJob.toLowerCase())
+        ||
+        j.id.toLowerCase().includes(searchJob.toLowerCase())
+        || j.username.toLowerCase().includes(searchJob.toLowerCase())
+
        }).reverse().map((j)=>{
           const {id,userId, username,title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area,jobType
           }=j;
@@ -65,13 +71,13 @@ className='btn btn-sm btn-success'>
 <td>{userId}</td>
 <td>{username}</td>
 <td>{title}</td>
-<td>{numberOfPeopleToHire}</td>
-<td style={{width:"75%"}} dangerouslySetInnerHTML={{__html:description}}/>
+{/* <td>{numberOfPeopleToHire}</td> */}
+{/* <td style={{width:"75%"}} dangerouslySetInnerHTML={{__html:description}}/> */}
 <td>{jobLocation}</td>
 <td>{reside}</td>
-<td>{jobUrl}</td>
+{/* <td>{jobUrl}</td> */}
 <td>{jobType}</td>
-<td >{province}, {area}</td>
+ <td>{province==""?"":`${province},`} {area}</td>
 
 
 <td style={{display:"flex",gap:"0.5rem"}}>

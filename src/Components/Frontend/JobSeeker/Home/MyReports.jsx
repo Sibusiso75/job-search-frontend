@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {FaSearchLocation,FaRegWindowClose, FaUserCircle, FaHome, FaArrowAltCircleLeft, FaComment, FaWindowClose, FaAlignJustify, FaChevronRight, FaInfoCircle, FaUserGraduate } from 'react-icons/fa';
-import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork } from 'react-icons/md';
+import {MdReport,MdLogout,MdWorkHistory,MdInterests,MdFeedback, MdArticle, MdOutlineLogout, MdOutlinePostAdd, MdPostAdd, MdWork, MdLocationOn } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {Button,  Offcanvas} from "react-bootstrap"
@@ -92,7 +92,7 @@ function MyReports() {
         return <div key={j.id}>
     <p> <b>Job Title - </b><MdWork/> {j.title}</p>
  <p><b>Job Type - </b>{j.jobType}</p>
- <p> <b>Job Location - </b><FaSearchLocation/> {j.province}, {j.area}</p>
+ <div><MdLocationOn/> {j.province==""?"":`${j.province},`} {j.area}</div>
  <p><b>{j.jobLocation}</b></p>
  <p><b> Report message</b> - {j.reportMessage}</p>
  <p><b>Report status</b> - {j.status}</p>
