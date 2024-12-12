@@ -40,7 +40,7 @@ const [status, setStatus] = useState(report.status)
   const updateR = async (e)=>{
     e.preventDefault()
     try {
-        const response = await axios.put(`http://localhost:5000/editReport/${id}`,{
+        const response = await axios.put(`https://job-search-api-wyvc.onrender.com/editReport/${id}`,{
             status
         })
         if(response.data.status){

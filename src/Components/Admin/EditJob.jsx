@@ -28,7 +28,7 @@ async function update(e){
   e.preventDefault()
   try {
     
-    const res = await axios.put(`http://localhost:5000/editJob/${id}`,{
+    const res = await axios.put(`https://job-search-api-wyvc.onrender.com/editJob/${id}`,{
       title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,jobType,province,area})
       if(res.data.status){
         dispatch(updateJob(res.data))

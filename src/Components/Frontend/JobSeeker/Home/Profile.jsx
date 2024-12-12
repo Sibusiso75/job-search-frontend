@@ -54,7 +54,7 @@ function Profile() {
       // },[])
       useEffect(()=>{
        const fetchDetails = async ()=>{
-        const response = await axios.get(`http://localhost:5000/profile/${id}`)
+        const response = await axios.get(`https://job-search-api-wyvc.onrender.com/profile/${id}`)
         setUsername(response.data.username)
         setEmail(response.data.email)
        setHighestGradePassed(response.data.highestGradePassed)
@@ -87,7 +87,7 @@ function Profile() {
       useEffect(()=>{
         try {
           const fetchSkills = async ()=>{
-              const response = await axios.get(`http://localhost:5000/mySkills/${id}`)
+              const response = await axios.get(`https://job-search-api-wyvc.onrender.com/mySkills/${id}`)
               dispatch(getSkill(response.data))
           }
           fetchSkills()

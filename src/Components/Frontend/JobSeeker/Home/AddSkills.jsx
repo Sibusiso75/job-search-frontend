@@ -37,7 +37,7 @@ function AddSkills() {
  axios.defaults.withCredentials=true;
  async function handleLogOut(e){
      e.preventDefault()
-     const response = await axios.get("http://localhost:5000/logout")
+     const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
        if(response.data.status){
            navigate("/login")
            dispatch(userLoggedIn(false))
@@ -49,7 +49,7 @@ function AddSkills() {
 useEffect(()=>{
   try {
     const fetchSkills = async ()=>{
-        const response = await axios.get(`http://localhost:5000/mySkills/${id}`)
+        const response = await axios.get(`https://job-search-api-wyvc.onrender.com/mySkills/${id}`)
         setUsername(response.data.username)
         setUserId(response.data.userId)
         dispatch(getSkill(response.data))
@@ -65,7 +65,7 @@ useEffect(()=>{
  async function handleSubmit(e){
     e.preventDefault()
     try {
-        const response = await axios.post(`http://localhost:5000/addSkill/${id}`,{username,skillName,skillLevel,userId})
+        const response = await axios.post(`https://job-search-api-wyvc.onrender.com/addSkill/${id}`,{username,skillName,skillLevel,userId})
            if(response.data.status){
                dispatch(addSkill({username,skillName,skillLevel,userId}))
                toast.success(response.data.message)

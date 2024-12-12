@@ -27,7 +27,7 @@ function AddFeedback() {
     axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -38,7 +38,7 @@ function AddFeedback() {
     }
 
     useEffect(()=>{
-        axios.get("http://localhost:5000/verify")
+        axios.get("https://job-search-api-wyvc.onrender.com/verify")
         .then(res=>{
          if(res.data.status){
            setUsername(res.data.username)
@@ -53,7 +53,7 @@ function AddFeedback() {
     async function handleFeedback(e){
         e.preventDefault()
         try {
-            const response = await axios.post(`http://localhost:5000/addFeedback/${id}`,{userId,username,feedbackMessage})
+            const response = await axios.post(`https://job-search-api-wyvc.onrender.com/addFeedback/${id}`,{userId,username,feedbackMessage})
             if(response.data.status){
                 dispatch(addfeedBack(response.data))
                 toast.info(response.data.message)

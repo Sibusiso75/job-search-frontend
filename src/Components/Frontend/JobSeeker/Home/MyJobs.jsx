@@ -24,8 +24,7 @@ function MyJobs() {
 
 
  const dispatch = useDispatch()
-//  https://job-search-api-n5ob.onrender.com - Production
-// http://localhost:5000 -
+// https://job-search-api-wyvc.onrender.com -
   let navigate = useNavigate()
 
  
@@ -35,7 +34,7 @@ function MyJobs() {
   axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -47,7 +46,7 @@ function MyJobs() {
 
   useEffect(() => {
     const fetchJob = async ()=>{
-      const response = await axios.get(`http://localhost:5000/mysavedJobs/${id}`)
+      const response = await axios.get(`https://job-search-api-wyvc.onrender.com/mysavedJobs/${id}`)
       dispatch(getsavedJob(response.data))
     }
     fetchJob()

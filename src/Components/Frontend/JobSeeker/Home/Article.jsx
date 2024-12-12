@@ -28,7 +28,7 @@ function Article() {
   axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -38,7 +38,7 @@ function Article() {
         }
     }
 useEffect(()=>{
-  axios.get("http://localhost:5000/verify")
+  axios.get("https://job-search-api-wyvc.onrender.com/verify")
   .then(res=>{
     if(res.data.status){
       setId(res.data.id)
@@ -52,7 +52,7 @@ useEffect(()=>{
 //   e.preventDefault()
 //   try {
     
-//     const res = await axios.post("http://localhost:5000/addPost", {post})
+//     const res = await axios.post("https://job-search-api-wyvc.onrender.com/addPost", {post})
 //     if(res.data.status){
 //       dispatch(addArticle(res.data))
 //       toast.success(res.data.message)
@@ -68,7 +68,7 @@ useEffect(()=>{
 useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("http://localhost:5000/articles")
+        const response = await fetch("https://job-search-api-wyvc.onrender.com/articles")
         const data = await response.json()
         dispatch(getArticle(data))
       } catch (error) {

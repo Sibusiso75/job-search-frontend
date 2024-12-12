@@ -37,7 +37,7 @@ function AddEducation() {
     axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -49,7 +49,7 @@ function AddEducation() {
 
     useEffect(()=>{
       const fetchEducation = async ()=>{
-        const response = await axios.get(`http://localhost:5000/education/${id}`)
+        const response = await axios.get(`https://job-search-api-wyvc.onrender.com/education/${id}`)
         setHighestGradePassed(response.data.highestGradePassed)
         setSchoolName(response.data.schoolName)
         setYearObtainedOne(response.data.yearObtainedOne)
@@ -63,7 +63,7 @@ function AddEducation() {
     async function handleSubmit(e){
         e.preventDefault()
         try {
-            const response = await axios.put(`http://localhost:5000/addEducation/${id}`,{
+            const response = await axios.put(`https://job-search-api-wyvc.onrender.com/addEducation/${id}`,{
                 highestGradePassed,schoolName,yearObtainedOne,institutionName,courseName,
                 yearObtainedTwo})
             if(response.data.status){

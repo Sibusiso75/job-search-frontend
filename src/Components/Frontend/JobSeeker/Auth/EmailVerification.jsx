@@ -10,7 +10,7 @@ function EmailVerification() {
     useEffect(()=>{
         async function verifyEmailUrl(){
             try {
-        const url = `http://localhost:5000/users/${param.id}/verify/${paran.token}`
+        const url = `https://job-search-api-wyvc.onrender.com/users/${param.id}/verify/${paran.token}`
               const {data} = await axios.get(url)
               console.log(data)
               setValidUrl(true)

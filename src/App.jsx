@@ -45,7 +45,7 @@ function App(){
  const dispatch = useDispatch()
 
   useEffect(()=>{
-    axios.get("http://localhost:5000/verify")
+    axios.get("https://job-search-api-wyvc.onrender.com/verify")
     .then(res=>{
      if(res.data.status){
        dispatch(userLoggedIn(res.data.status))

@@ -13,7 +13,7 @@ let navigate = useNavigate()
   const articles = useSelector(state=>state.articles.articles)
   useEffect(() => {
     const fetchArticles = async ()=>{
-      const response = await fetch("http://localhost:5000/articles")
+      const response = await fetch("https://job-search-api-wyvc.onrender.com/articles")
       const data = await response.json()
        dispatch(getArticle(data))
     }

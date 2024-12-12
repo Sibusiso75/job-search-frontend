@@ -11,7 +11,7 @@ function ForgotPassword() {
     async function handleSubmit(e){
       e.preventDefault()
       try {
-        const response = await axios.post("http://localhost:5000/forgot-password",{email})
+        const response = await axios.post("https://job-search-api-wyvc.onrender.com/forgot-password",{email})
         if(response.data.status){
           toast.success(response.data.message)
         }

@@ -43,7 +43,7 @@ const [username, setUsername] = useState("")
 const [email, setEmail] = useState("")
 
 useEffect(()=>{
-  axios.get("http://localhost:5000/verify")
+  axios.get("https://job-search-api-wyvc.onrender.com/verify")
   .then(res=>{
    if(res.data.status){
      setUsername(res.data.username)
@@ -61,7 +61,7 @@ let navigate = useNavigate()
 async function handleSubmit(e){
   e.preventDefault()
 try {
-  const response = await axios.post("http://localhost:5000/addJob",{userId,username,title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area,jobType})
+  const response = await axios.post("https://job-search-api-wyvc.onrender.com/addJob",{userId,username,title,numberOfPeopleToHire,description,jobLocation,reside,jobUrl,province,area,jobType})
      if(response.data.status){
        dispatch(addJob(response.data))
       

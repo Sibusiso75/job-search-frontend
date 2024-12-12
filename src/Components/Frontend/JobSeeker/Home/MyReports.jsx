@@ -28,7 +28,7 @@ function MyReports() {
   axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -41,7 +41,7 @@ function MyReports() {
 
   useEffect(() => {
     const fetchJob = async ()=>{
-      const response = await axios.get(`http://localhost:5000/myReports/${id}`)
+      const response = await axios.get(`https://job-search-api-wyvc.onrender.com/myReports/${id}`)
       dispatch(getReport(response.data))
     }
     fetchJob()

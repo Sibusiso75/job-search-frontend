@@ -25,7 +25,7 @@ function User() {
       e.preventDefault()
       try {
           
-          const response = await axios.put(`http://localhost:5000/updateUser/${id}`,{username,email,dateOfBirth, gender,
+          const response = await axios.put(`https://job-search-api-wyvc.onrender.com/updateUser/${id}`,{username,email,dateOfBirth, gender,
             address, aboutMe, province, country, town, postalCode})
             if(response.data.status){
               dispatch(updateUser(response.data))

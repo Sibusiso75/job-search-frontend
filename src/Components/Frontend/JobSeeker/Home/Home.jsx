@@ -48,7 +48,7 @@ function Home() {
 axios.defaults.withCredentials=true;
 async function handleLogOut(e){
     e.preventDefault()
-    const response = await axios.get("http://localhost:5000/logout")
+    const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
       if(response.data.status){
         dispatch(userLoggedIn(false))
           navigate("/login")
@@ -87,7 +87,7 @@ async function handleLogOut(e){
 //     useEffect(() => {
 //       const fetchData = async ()=>{
 // try {
-//    const response = await axios.get(`http://localhost:5000/jobs/search?page=${page}&query=${q}&category=${category}&price=${price}&order=${order}`)
+//    const response = await axios.get(`https://job-search-api-wyvc.onrender.com/jobs/search?page=${page}&query=${q}&category=${category}&price=${price}&order=${order}`)
 //     dispatch(getJob(response.data))
 
 // } catch (error) {
@@ -100,7 +100,7 @@ async function handleLogOut(e){
 // useEffect(() => {
 //   const fetchCategories = async ()=>{
 // try {
-// const response = await axios.get(`http://localhost:5000/jobs/categories`)
+// const response = await axios.get(`https://job-search-api-wyvc.onrender.com/jobs/categories`)
 //  setCategories(response.data)
 // } catch (error) {
 //    console.log(error) }}
@@ -109,7 +109,7 @@ async function handleLogOut(e){
 
 // https://job-search-api-n5ob.onrender.com/jobs
 useEffect(()=>{
-  axios.get("http://localhost:5000/verify")
+  axios.get("https://job-search-api-wyvc.onrender.com/verify")
   .then(res=>{
    if(res.data.status){
      dispatch(userLoggedIn(res.data.status))
@@ -121,7 +121,7 @@ useEffect(()=>{
  },[])
  useEffect(() => {
    const fetchJobs = async ()=>{
-    const response = await fetch("http://localhost:5000/allJobs")
+    const response = await fetch("https://job-search-api-wyvc.onrender.com/allJobs")
     const data = await response.json()
 
     dispatch(getJob(data))

@@ -33,7 +33,7 @@ function AddWork() {
     axios.defaults.withCredentials=true;
   async function handleLogOut(e){
       e.preventDefault()
-      const response = await axios.get("http://localhost:5000/logout")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
         if(response.data.status){
             navigate("/login")
             dispatch(userLoggedIn(false))
@@ -44,7 +44,7 @@ function AddWork() {
 
     useEffect(()=>{
          const fetchExperience = async ()=>{
-          const response = await axios.get(`http://localhost:5000/work-experience/${id}`)
+          const response = await axios.get(`https://job-search-api-wyvc.onrender.com/work-experience/${id}`)
              setJobTitle(response.data.jobTitle)
              setCompanyName(response.data.companyName)
              setYearsOfExperience(response.data.yearsOfExperience)
@@ -56,7 +56,7 @@ function AddWork() {
     async function handleSubmit(e){
         e.preventDefault()
         try {
-            const response = await axios.put(`http://localhost:5000/addWork/${id}`,{
+            const response = await axios.put(`https://job-search-api-wyvc.onrender.com/addWork/${id}`,{
                 jobTitle,
                 companyName,
                 yearsOfExperience,

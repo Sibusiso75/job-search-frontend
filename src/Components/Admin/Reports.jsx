@@ -13,7 +13,7 @@ function Reports() {
 
  useEffect(() => {
    const fetchReports = async ()=>{
-    const response = await axios.get("http://localhost:5000/allReports")
+    const response = await axios.get("https://job-search-api-wyvc.onrender.com/allReports")
     dispatch(getReport(response.data))
    }
    fetchReports() 
@@ -21,7 +21,7 @@ function Reports() {
 
  async function deleteR(id){
     try {
-        const response = await axios.delete(`http://localhost:5000/deleteReport/${id}`)
+        const response = await axios.delete(`https://job-search-api-wyvc.onrender.com/deleteReport/${id}`)
         if(response.data.status){
             dispatch(deleteReport({id}))
             toast.success(response.data.message)

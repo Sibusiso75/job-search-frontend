@@ -39,7 +39,7 @@ function ProfileEditUser() {
     axios.defaults.withCredentials=true;
     async function handleLogOut(e){
         e.preventDefault()
-        const response = await axios.get("http://localhost:5000/logout")
+        const response = await axios.get("https://job-search-api-wyvc.onrender.com/logout")
           if(response.data.status){
               navigate("/login")
               dispatch(userLoggedIn(false))
@@ -53,7 +53,7 @@ function ProfileEditUser() {
       e.preventDefault()
       try {
         
-        const response = await axios.put(`http://localhost:5000/editUser/${id}`,
+        const response = await axios.put(`https://job-search-api-wyvc.onrender.com/editUser/${id}`,
           {username,email,town,postalCode,province, dateOfBirth,gender,bio,phoneNumber})
          
         if(response.data.status){
@@ -69,7 +69,7 @@ function ProfileEditUser() {
   }
   useEffect(()=>{
     const fetchDetails = async ()=>{
-     const res= await axios.get(`http://localhost:5000/profile/${id}`)
+     const res= await axios.get(`https://job-search-api-wyvc.onrender.com/profile/${id}`)
            setUsername(res.data.username)
             setEmail(res.data.email)
             setTown(res.data.town)

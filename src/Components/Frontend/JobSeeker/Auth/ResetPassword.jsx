@@ -13,7 +13,7 @@ function ResetPassword() {
     async function handleSubmit(e){
         e.preventDefault()
         try {
-           const response = await axios.post(`http://localhost:5000/reset-password/${token}`, 
+           const response = await axios.post(`https://job-search-api-wyvc.onrender.com/reset-password/${token}`, 
             {password})
              if(response.data.status){
                  toast.success(response.data.message)

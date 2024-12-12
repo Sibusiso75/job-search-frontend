@@ -24,7 +24,7 @@ function SignUp() {
   async function handleSubmit(event){
     event.preventDefault();
     try {
-        const response = await axios.post("http://localhost:5000/register",
+        const response = await axios.post("https://job-search-api-wyvc.onrender.com/register",
           {username,email,password,town,province,postalCode})
           if(username==""){
             setValidated(true)

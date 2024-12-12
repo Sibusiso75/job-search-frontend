@@ -12,7 +12,7 @@ function AllFeedbacks() {
 
   useEffect(() => {
     const fetchFeedbacks= async ()=>{
-      const response = await axios.get("http://localhost:5000/feedbacks")
+      const response = await axios.get("https://job-search-api-wyvc.onrender.com/feedbacks")
        dispatch(getfeedback(response.data))
     }
     fetchFeedbacks()

@@ -17,7 +17,7 @@ function Users() {
     async function removeUser(id){
         try {
             
-            const response = await axios.delete(`http://localhost:5000/deleteUser/${id}`)
+            const response = await axios.delete(`https://job-search-api-wyvc.onrender.com/deleteUser/${id}`)
               if(response.data.status){
                 dispatch(deleteUser({id}))
                 toast.success(response.data.message)
@@ -33,7 +33,7 @@ function Users() {
            const fetchData = async ()=>{
     try {
         
-        const response = await axios.get("http://localhost:5000/admin")
+        const response = await axios.get("https://job-search-api-wyvc.onrender.com/admin")
          dispatch(getUser(response.data))
     } catch (error) {
             console.log(error)
