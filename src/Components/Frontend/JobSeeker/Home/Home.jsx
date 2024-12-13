@@ -11,8 +11,11 @@ import {BsThreeDotsVertical} from 'react-icons/bs'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
 import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff, MdLocationPin, MdLocationSearching, MdMyLocation, MdAddLocationAlt, MdOutlineLocalActivity } from 'react-icons/md'
 import { toast } from 'react-toastify'
-import MyLoader from '../../../../MyLoader'
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
 
 function Home() {
   
@@ -267,10 +270,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
         
-        <div style={{display:"flex",gap:"1rem"
-       , flexWrap:"wrap",
-}}>
-
+       
             {
                 jobs.filter((job)=>{
                   return job.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -278,22 +278,25 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return  <div key={job.id} className='itemsContainer'>
-                         
-                      <div  style={{display:"flex", flexDirection:"column"}}  onClick={()=>navigate(`/job/${job.id}`)}>
-                    
-
-                     <p><MdWork/> Job title - <b>{job.title}</b></p>
-                     <p><MdLocationCity/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
-                     <p><MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}</p>
-                     <p><FaClock/> Posted in {job.createdAt}</p>
-                  
-                                   
-                                  </div>
-                                 
-                                </div>                            
+                      return   <Card sx={{ maxWidth: 345 }} key={job.id} onClick={()=>navigate(`/job/${job.id}`)}>
+                      <CardActionArea>
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                          <MdWork/> Job title - {job.title}
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                          <MdLocationCity/>{job.jobType==""?"":`${job.jobType}`}
+                                     <MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}
+                                     <FaClock/> Posted in {job.createdAt}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>                      
                 })
             }
+
+
+            
             {/* {[...Array(pages).key()].map((x)=>(
               <Link key={x+1} className='mx-1' to={getFilterUrl({page:x+1})}>
                 <button className={Number(page)===x+1?"text-bold":''}>
@@ -303,9 +306,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
             ))} */}
             
 
-        </div>
-        <br /><br />
-
+        
 
 
        
