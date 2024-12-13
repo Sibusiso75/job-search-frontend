@@ -284,9 +284,9 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                     
 
                      <p><MdWork/> Job title - <b>{job.title}</b></p>
-                     <p><MdLocationCity style={{color:"gray"}}/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
-                     <p><MdLocationOn style={{color:"gray"}}/> {job.province==""?"":`${job.province},`} {job.area}</p>
-                     <p><FaClock style={{color:"gray"}}/> Posted in {job.createdAt}</p>
+                     <p><MdLocationCity /> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
+                     <p><MdLocationOn /> {job.province==""?"":`${job.province},`} {job.area}</p>
+                     <p><FaClock /> Posted in {job.createdAt}</p>
                   
                                    
                                   </div>
