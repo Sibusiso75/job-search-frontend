@@ -8,11 +8,9 @@ import {FaRProject,FaSearchLocation, FaUserCircle, FaHome, FaSearch, FaChevronRi
 import { Link, useNavigate, useLocation} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import {BsThreeDotsVertical} from 'react-icons/bs'
-import MyLoader from '../../../../MyLoader'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
 import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff, MdLocationPin, MdLocationSearching, MdMyLocation, MdAddLocationAlt, MdOutlineLocalActivity } from 'react-icons/md'
 import { toast } from 'react-toastify'
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -271,9 +269,11 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
           </Col> */}
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
-<Card sx={{ display:"flex",width:"200px", gap:"1rem" }} onClick={()=>navigate(`/job/${job.id}`)}>
+        
+        <div style={{display:"flex",gap:"1rem"
+       , flexWrap:"wrap",
+}}>
 
-       
             {
                 jobs.filter((job)=>{
                   return job.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -281,26 +281,34 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return   <Card className="itemsContainer" key={job.id} onClick={()=>navigate(`/job/${job.id}`)}>
-                      <CardActionArea>
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                          <MdWork/> Job title - {job.title}
-                          </Typography>
-                          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                          <MdLocationCity/>{job.jobType==""?"":`${job.jobType}`}
-                                     <MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}
-                                     <FaClock/> Posted in {job.createdAt}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>                      
+                      return   <Card sx={{ maxWidth: 345 }} onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image="/static/images/cards/contemplative-reptile.jpg"
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          Job title - {job.title}
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <MdWork/> Job title - {job.title}
+                     <MdLocationCity/>  {job.jobType==""?"":`${job.jobType}`}
+                     <MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}
+                     <FaClock/> Posted in {job.createdAt}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+
+                    
+                  
+                                   
+                                                        
                 })
-              }
-              </Card>
-
-
-            
+            }
             {/* {[...Array(pages).key()].map((x)=>(
               <Link key={x+1} className='mx-1' to={getFilterUrl({page:x+1})}>
                 <button className={Number(page)===x+1?"text-bold":''}>
@@ -310,7 +318,9 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
             ))} */}
             
 
-        
+        </div>
+        <br /><br />
+
 
 
        
