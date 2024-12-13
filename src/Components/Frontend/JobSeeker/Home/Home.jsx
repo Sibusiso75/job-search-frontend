@@ -271,7 +271,8 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
           </Col> */}
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
-        
+<Card sx={{ maxWidth: 345 }} onClick={()=>navigate(`/job/${job.id}`)}>
+
        
             {
                 jobs.filter((job)=>{
@@ -280,7 +281,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return   <Card sx={{ maxWidth: 345 }} key={job.id} onClick={()=>navigate(`/job/${job.id}`)}>
+                      return   <Card key={job.id} onClick={()=>navigate(`/job/${job.id}`)}>
                       <CardActionArea>
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
@@ -295,7 +296,8 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                       </CardActionArea>
                     </Card>                      
                 })
-            }
+              }
+              </Card>
 
 
             
