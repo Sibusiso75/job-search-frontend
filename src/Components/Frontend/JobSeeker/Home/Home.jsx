@@ -271,7 +271,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
 {jobs.length==0 && <MyLoader/>}
         
         <div style={{display:"flex",gap:"1rem"
-       , flexWrap:"wrap",
+       , flexWrap:"wrap",margin:"20px"
 }}>
 
             {
@@ -281,7 +281,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return   <Card sx={{ maxWidth: 345 }} onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
+                      return   <Card sx={{ maxWidth: 345,display:"flex", flexDirection:"columm" }} onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
       <CardActionArea>
        
         <CardContent>
