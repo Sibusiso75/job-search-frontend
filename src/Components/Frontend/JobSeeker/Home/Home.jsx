@@ -11,12 +11,9 @@ import {BsThreeDotsVertical} from 'react-icons/bs'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
 import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff, MdLocationPin, MdLocationSearching, MdMyLocation, MdAddLocationAlt, MdOutlineLocalActivity } from 'react-icons/md'
 import { toast } from 'react-toastify'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
 import MyLoader from '../../../../MyLoader'
+
+
 function Home() {
   
   let navigate = useNavigate()
@@ -270,8 +267,8 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
         
-        <Card  variant="body2" sx={{display:"flex",gap:"1rem"
-       , flexWrap:"wrap",margin:"20px"
+        <div style={{display:"flex",gap:"1rem"
+       , flexWrap:"wrap",
 }}>
 
             {
@@ -281,27 +278,20 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return   <Card className="itemsContainer" onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
-      <CardActionArea>
-       
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          Job title - {job.title}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          <MdWork/> Job title - {job.title}
-                     <MdLocationCity/>  {job.jobType==""?"":`${job.jobType}`}
-                     <MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}
-                     <FaClock/> Posted in {job.createdAt}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-
+                      return  <div key={job.id} className='itemsContainer'>
+                         
+                      <div  style={{display:"flex",color:"gray", flexDirection:"column"}}  onClick={()=>navigate(`/job/${job.id}`)}>
                     
+
+                     <p><MdWork/> Job title - <b>{job.title}</b></p>
+                     <p><MdLocationCity/> <b> {job.jobType==""?"":`${job.jobType}`}</b></p>
+                     <p><MdLocationOn/> {job.province==""?"":`${job.province},`} {job.area}</p>
+                     <p><FaClock/> Posted in {job.createdAt}</p>
                   
                                    
-                                                        
+                                  </div>
+                                 
+                                </div>                            
                 })
             }
             {/* {[...Array(pages).key()].map((x)=>(
@@ -313,7 +303,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
             ))} */}
             
 
-        </Card>
+        </div>
         <br /><br />
 
 
