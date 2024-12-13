@@ -8,9 +8,11 @@ import {FaRProject,FaSearchLocation, FaUserCircle, FaHome, FaSearch, FaChevronRi
 import { Link, useNavigate, useLocation} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import {BsThreeDotsVertical} from 'react-icons/bs'
+import MyLoader from '../../../../MyLoader'
 import {Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas} from "react-bootstrap"
 import {MdSave, MdAlignHorizontalLeft, MdAlignVerticalCenter, MdArrowDropDown, MdArticle, MdCloseFullscreen, MdDarkMode, MdOutlineAlignVerticalCenter, MdOutlineLogout, MdTab, MdWork, MdReport, MdWorkHistory, MdInterests, MdFeedback, MdLogout, MdJoinFull, MdLocalActivity, MdLocalAirport, MdWorkOutline, MdLocationOn, MdLocationCity, MdLocationOff, MdLocationPin, MdLocationSearching, MdMyLocation, MdAddLocationAlt, MdOutlineLocalActivity } from 'react-icons/md'
 import { toast } from 'react-toastify'
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
