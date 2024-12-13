@@ -271,7 +271,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
           </Col> */}
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
-<Card sx={{ display:"flex",maxWidth: 345, gap:"1rem" }} onClick={()=>navigate(`/job/${job.id}`)}>
+<Card sx={{ display:"flex",width:"200px", gap:"1rem" }} onClick={()=>navigate(`/job/${job.id}`)}>
 
        
             {
