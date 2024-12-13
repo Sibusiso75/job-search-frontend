@@ -281,7 +281,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                  job.area.toLowerCase().includes(query.toLowerCase())
                   
                 }).reverse().map((job)=>{
-                      return   <Card sx={{ maxWidth: 345,display:"flex", flexDirection:"columm" }} onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
+                      return   <Card className="itemsContainer" onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
       <CardActionArea>
        
         <CardContent>
