@@ -270,7 +270,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
          {/* </Row> */}
 {jobs.length==0 && <MyLoader/>}
         
-        <div style={{display:"flex",gap:"1rem"
+        <Card  variant="body2" sx={{display:"flex",gap:"1rem"
        , flexWrap:"wrap",margin:"20px"
 }}>
 
@@ -313,7 +313,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
             ))} */}
             
 
-        </div>
+        </Card>
         <br /><br />
 
 
