@@ -283,12 +283,7 @@ style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
                 }).reverse().map((job)=>{
                       return   <Card sx={{ maxWidth: 345 }} onClick={()=>navigate(`/job/${job.id}`)}key={job.id}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        />
+       
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
           Job title - {job.title}
