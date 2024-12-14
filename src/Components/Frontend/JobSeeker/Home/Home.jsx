@@ -139,6 +139,8 @@ useEffect(()=>{
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              style={{fontSize:"small"}}
+
             />
           </Form>
       <Navbar.Toggle  style={{display:"flex", justifyContent:"spaceAround"}}/>
