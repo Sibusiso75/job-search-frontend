@@ -147,8 +147,8 @@ useEffect(()=>{
             style={{ maxHeight: '100px',gap:"0.3rem",display:"flex"}}
           >
             <Link to="/"               className="me-2"
-style={{color:"white",borderBottom:"2px groove white"}}><FaHome/> Home </Link>
-            <Link to="/posts" className="me-2" style={{color:"white"}}><MdArticle/> Posts </Link>
+style={{color:"white",borderBottom:"2px groove white"}}><span className="homeTab"><FaHome/> Home</span> </Link>
+            <Link to="/posts" className="me-2" style={{color:"white"}}><span className='postTab'><MdArticle/> Posts</span> </Link>
            
            
           </Nav>
