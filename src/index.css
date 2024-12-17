@@ -81,14 +81,15 @@ textarea{
     font-size: 11px;
     color:gray;
 }
-  .articleContainer, .s{
-    /* margin:10px; */
-    box-shadow:-1px 1px -2px 3px black;
-    border:1px solid gray;
-    padding:10px;
-    word-wrap: break-word;
-    width:95%;
-  }
+.articleContainer{
+  margin:10px;
+  box-shadow:-1px 1px -2px 3px black;
+  border:1px solid gray;
+  padding:10px;
+  gap:1rem;
+  width:90%;
+
+}
   
   .s{
     background: black;
@@ -241,9 +242,8 @@ padding: 5px;
     box-shadow:-1px 1px -2px 3px black;
     border:1px solid gray;
     padding:10px;
-    word-wrap: break-word;
-    flex-wrap: wrap;
-    width:100%;
+    gap:1rem;
+    width:98%;
 
   }
   .searchFormAndCategories{
@@ -392,8 +392,10 @@ padding: 5px;
     margin:10px;
     box-shadow:-1px 1px -2px 3px black;
     border:1px solid gray;
+    gap:1rem;
     padding:10px;
     width:98%;
+    gap:1rem;
 
   }
   .alignRight{
